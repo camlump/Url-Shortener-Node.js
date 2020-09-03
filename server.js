@@ -41,4 +41,8 @@ app.get('/:shortUrl', async (req, res)=>{
 })
 
 
-app.listen(process.env.PORT || 5000)
+const port = process.env.PORT || 5000
+
+app.listen(port, () => {
+    console.log(`server running at ${port}`)
+});
