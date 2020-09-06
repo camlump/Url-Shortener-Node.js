@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ShortUrl = require('./models/shortUrl');
-const shortUrl = require('./models/shortUrl');
+
 
 
 const app = express();
@@ -34,7 +34,7 @@ app.get('/:shortUrl', async(req, res)=>{
   if(shortUrl == null) return res.sendStatus(404)
 
   shortUrl.clicks++
-  shortUrl.save()
+  await shortUrl.save()
 
   res.redirect(shortUrl.full)
 
