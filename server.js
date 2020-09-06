@@ -20,7 +20,7 @@ app.get('/', async (req, res)=> {
     res.render('index', { shortUrls: shortUrls});
 });
 
-app.post('/shortUrls', async(req, res)=>{
+app.post('/shortUrls', async (req, res)=>{
    await ShortUrl.create({
         full: req.body.fullUrl
     })
@@ -28,7 +28,7 @@ app.post('/shortUrls', async(req, res)=>{
     res.redirect('/')
 })
 
-app.get('/:shortUrl', async(req, res)=>{
+app.get('/:shortUrl', async (req, res)=>{
   const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl }) 
 
   if(shortUrl == null) return res.sendStatus(404)
